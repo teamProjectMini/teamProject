@@ -12,11 +12,11 @@ typedef struct {
 
 //CRUD
 //create
-
+void add_item(item *t);
 //read
-
+void read_item(item t);
 //update
-
+void update_item(item *t);
 //delete
-
+void delete_item(item *t);
 
