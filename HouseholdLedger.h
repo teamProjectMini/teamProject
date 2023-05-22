@@ -40,7 +40,7 @@ void total_expense(item *t[], int count);
 //사용자와 또래지출 비교
 void compare_expense(item *t[], int count);
 //지출 예정 기록
-
+void expense_plan(item *t[], int count);
 
 //search 기능
 void search_item(item *t[], int count);
