@@ -36,9 +36,9 @@ void list_item(item *t[], int count);
 void read_item_type(item t);
 
 //총 지출 조회
-
+void total_expense(item *t[], int count);
 //사용자와 또래지출 비교
-
+void compare_expense(item *t[], int count);
 //지출 예정 기록
 
 
