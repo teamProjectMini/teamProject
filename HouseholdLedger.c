@@ -163,7 +163,25 @@ void compare_expense(item *t[], int count){
   else printf("Your current expenditure is less than the average expenditure of your age group in Korea. You're managing your money properly:)");
 }
 //지출 예정 기록
+void expense_plan(item *t[], int count){
+  int planExp[4];
+  int sum = 0;
+  printf("Enter your estimated expenditure for the rest of the month.\n");
+  printf("1. Food/Dining expenses: ");
+  scanf("%d", &planExp[0]);
+  printf("2. Educational/Cultural expenses: ");
+  scanf("%d", &planExp[1]);
+  printf("3. Transportation/Oil expenses: ");
+  scanf("%d", &planExp[2]);
+  printf("4. Cost of daily necessities: ");
+  scanf("%d", &planExp[3]);
 
+  for(int i = 0; i < 4; i++){
+    sum+=planExp[i];
+  }
+  printf("The total expenditure for the remaining month is expected to be %d won\n", sum);
+  
+}
 
 //search 기능
 void search_item(item *t[], int count) {
