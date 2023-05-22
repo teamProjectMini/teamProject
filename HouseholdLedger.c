@@ -164,6 +164,17 @@ void compare_expense(item *t[], int count){
 }
 //지출 예정 기록
 void expense_plan(item *t[], int count){
+  int i;
+  int total = 0; 
+  int curFin = 0;//현재 재정
+  
+  for(int j = 0; j < count; j++){
+    if(t[j]->in_or_out==1)curFin+=t[j]->price;
+  }
+  for(i = 0; i < count; i++){
+    if(t[i]->in_or_out==0)total+=t[i]->price;
+  }
+  
   int planExp[4];
   int sum = 0;
   printf("Enter your estimated expenditure for the rest of the month.\n");
@@ -179,10 +190,11 @@ void expense_plan(item *t[], int count){
   for(int i = 0; i < 4; i++){
     sum+=planExp[i];
   }
+  printf("\n");
   printf("The total expenditure for the remaining month is expected to be %d won\n", sum);
-  
+  printf("The total expenditure for this month is expected to be %d won.\n", total+sum);
+  printf("The remaining amount is expected to be %d won.\n", curFin-(total+sum));
 }
-
 //search 기능
 void search_item(item *t[], int count) {
   char fitem[50];
