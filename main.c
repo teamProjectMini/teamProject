@@ -1,7 +1,7 @@
 #include "HouseholdLedger.h"
 
 int main(void) {
-  item *t[20];
+  item *t[100];
   int order;
 
   FILE *f;
@@ -126,3 +126,4 @@ int main(void) {
     }
   }
 }
+

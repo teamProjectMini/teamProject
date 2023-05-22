@@ -22,6 +22,7 @@ int select_order() {
   printf("0. exit");
   printf("\nchoose order > ");
   scanf("%d", &order);
+  printf("\n");
 
   return order;
 }
@@ -36,9 +37,17 @@ int add_item(item *t) {
   scanf("%s", t->name);
   printf("input amount > ");
   scanf("%d", &t->price);
-  printf("항목 나열 ~~\n"); //지출, 수입 종류 추가적으로 생각해서 나열? or 문자열로 받아서 구별  어찌되든 개선 필요
-  printf("input type > ");
-  scanf("%d", &t->type);
+  if (t->in_or_out == 1) {
+    t->type = 0;
+  }
+  else {
+    printf("1. Food/Dining expenses\n");
+    printf("2. Educational/Cultural expenses\n");
+    printf("3. Transprotation/Oil expense\n");
+    printf("4. Cost of daily necessities\n");
+    printf("input type > ");
+    scanf("%d", &t->type);
+  }
 
   printf("=> add success\n\n");
   return 1;
@@ -52,7 +61,7 @@ void read_item(item *t) {
   else {
     strcat(k, "out");
   }
-  printf("%4s %8s %10d %10d\n", k, t->name, t->price, t->type);
+  printf("%6s %11s %10d %10d\n", k, t->name, t->price, t->type);
 }
 //select (update와 delete에 사용)
 int select_item(item *t[], int count) {
@@ -73,9 +82,17 @@ int update_item(item *t) {
   scanf("%s", t->name);
   printf("input amount > ");
   scanf("%d", &t->price);
-  printf("항목 나열 ~~\n"); //지출, 수입 종류 추가적으로 생각해서 나열? or 문자열로 받아서 구별  어찌되든 개선 필요
-  printf("input type > ");
-  scanf("%d", &t->type);
+  if (t->in_or_out == 1) {
+    t->type = 0;
+  }
+  else {
+    printf("1. Food/Dining expenses\n");
+    printf("2. Educational/Cultural expenses\n");
+    printf("3. Transprotation/Oil expense\n");
+    printf("4. Cost of daily necessities\n");
+    printf("input type > ");
+    scanf("%d", &t->type);
+  }
 
   printf("=> update success\n\n");
   return 1;
@@ -103,8 +120,27 @@ void list_item(item *t[], int count) {
 
 //가계부 기능
 //분야별 지출 내역 조회
-void read_item_type(item t) {  //분야 항목 다시 생각해서 코드 짜야함
-  
+void read_item_type(item *t[], int count) {
+  int k;
+
+  printf("항목 나열 부분\n");  //항목 나열 부분
+  printf("Input number of type to show the total expenditure > ");
+  scanf("%d", &k);
+
+  if (k < 1 || k > 4) {
+    printf("no that type\n");
+    return;
+  }
+
+  int i;
+  print_head();
+  for (i = 0; i < count; ++i) {
+    if (t[i] == NULL) {
+      continue;
+    }
+    printf("%2d ", i+1);
+    read_item(t[i]);
+  }
 }
 
 //총 지출 조회 및 잔액 조회
@@ -270,3 +306,4 @@ void savefile(item *t[], int count) {
     fprintf(f, "\n");
   }
 }
+

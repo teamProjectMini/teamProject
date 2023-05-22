@@ -33,7 +33,7 @@ void list_item(item *t[], int count);
 
 //가계부 기능
 //분야별 지출 내역 조회
-void read_item_type(item t);
+void read_item_type(item *t[], int count);
 
 //총 지출 조회
 void total_expense(item *t[], int count);
@@ -50,3 +50,4 @@ void search_item(item *t[], int count);
 int readfile(item *t[], FILE *f);
 //파일 저장
 void savefile(item *t[], int count);
+
