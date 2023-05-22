@@ -105,10 +105,52 @@ void read_item_type(item t) {  //분야 항목 다시 생각해서 코드 짜야
   
 }
 
-//총 지출 조회 
+//총 지출 조회
+void total_expense(item *t[], int count){
+  int i;
+  int total = 0; 
+  for(i = 0; i < count; i++){
+    if(t[i]->in_or_out==0)total+=t[i]->price;
+  }
+  printf("The current total expenditure is %d won.\n",total);
+  
+}
 
 //사용자와 또래지출 비교
+void compare_expense(item *t[], int count){
+  int ageType;
+  int averageTotal[4]={17500,40000,64000,288000};
+  
+  printf("Which age bracket are you?\n");
+  printf("1. Elementary school students\n");
+  printf("2. Middle school student\n");
+  printf("3. High school student\n");
+  printf("4. College students\n");
+  printf("Select type -> ");
+  scanf("%d",&ageType);
+  
+  int i;
+  int total = 0; 
+  for(i = 0; i < count; i++){
+    if(t[i]->in_or_out==0)total+=t[i]->price;
+  }
 
+  printf("\n");
+  if(ageType == 1){
+    printf("The average monthly expenditure of elementary school students in Korea is %d won.\n", averageTotal[0]);
+  }
+  else if(ageType == 2){
+    printf("The average monthly expenditure of middle school students in Korea is %d won.\n", averageTotal[1]);
+  }
+  else if(ageType == 3){
+    printf("The average monthly expenditure of high school students in Korea is %d won.\n",averageTotal[2]);
+  }
+  else if(ageType == 4){
+    printf("The average monthly expenditure of college students in Korea is %d won.\n",averageTotal[3]);
+  }
+  if(averageTotal[ageType-1]+10000 < total)printf("Currently, your expenditure is relatively higher than the average expenditure of your age group in Korea. You have to manage your money properly.\n");
+  else printf("Your current expenditure is less than the average expenditure of your age group in Korea. You're managing your money properly:)");
+}
 //지출 예정 기록
 
 
