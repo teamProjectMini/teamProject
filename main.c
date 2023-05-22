@@ -72,6 +72,9 @@ int main(void) {
       else if(order == 7){
         compare_expense(t, index);
       }
+    else if(order == 8){
+        expense_plan(t, index);
+      }
 
     else if (order == 0) {  //0. exit
       break;
