@@ -65,10 +65,13 @@ int main(void) {
     else if (order == 5) {  //5. search item
       search_item(t, index);
     }
-
-    // else if (order == 6) {  //6. 추가 기능
+ else if (order == 6) {  
+      total_expense(t, index);
       
-    // }
+     }
+      else if(order == 7){
+        compare_expense(t, index);
+      }
 
     else if (order == 0) {  //0. exit
       break;
