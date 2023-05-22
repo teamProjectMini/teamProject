@@ -16,7 +16,9 @@ int select_order() {
   printf("3. update item\n");
   printf("4. delete item\n");
   printf("5. search item\n");
-  printf("6. ~\n");  //이외 기능
+  printf("6. total expense\n");
+  printf("7. compare expense\n");
+  printf("8. plan expense\n");
   printf("0. exit");
   printf("\nchoose order > ");
   scanf("%d", &order);
