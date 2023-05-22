@@ -16,7 +16,7 @@ int select_order() {
   printf("3. update item\n");
   printf("4. delete item\n");
   printf("5. search item\n");
-  printf("6. total expense\n");
+  printf("6. current financial status\n");
   printf("7. compare expense\n");
   printf("8. plan expense\n");
   printf("0. exit");
@@ -107,16 +107,25 @@ void read_item_type(item t) {  //분야 항목 다시 생각해서 코드 짜야
   
 }
 
-//총 지출 조회
+//총 지출 조회 및 잔액 조회
 void total_expense(item *t[], int count){
   int i;
   int total = 0; 
+  int curFin = 0;//현재 재정
+  for(int j = 0; j < count; j++){
+    if(t[j]->in_or_out==1)curFin+=t[j]->price;
+  }
+  printf("Overall income for this month: %d\n", curFin);
+  
   for(i = 0; i < count; i++){
     if(t[i]->in_or_out==0)total+=t[i]->price;
   }
   printf("The current total expenditure is %d won.\n",total);
+
+  if(curFin > 0)printf("The remaining amount is %d won.\n", curFin-total);
   
 }
+
 
 //사용자와 또래지출 비교
 void compare_expense(item *t[], int count){
